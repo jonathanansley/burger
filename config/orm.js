@@ -4,65 +4,35 @@ var connection = require("./connection.js");
 // Object for all our SQL statement functions.
 var orm = {
   all: function(tableInput, cb) {
-    var queryString = "SELECT * FROM " + tableInput + ";";
-    connection.query(queryString, function(err, result) {
+    connection.query("SELECT * FROM " + tableInput + ";", function(err, result) {
       if (err) {
         throw err;
       }
       cb(result);
     });
-  },
-  create: function(table, cols, vals, cb) {
-    var queryString = "INSERT INTO " + table;
+  }, // end of all function
 
-    queryString += " (";
-    queryString += cols.toString();
-    queryString += ") ";
-    queryString += "VALUES (";
-    queryString += printQuestionMarks(vals.length);
-    queryString += ") ";
-
-    console.log(queryString);
-
-    connection.query(queryString, vals, function(err, result) {
-      if (err) {
-        throw err;
-      }
-      cb(result);
-    });
-  },
   // An example of objColVals would be {name: panther, sleepy: true}
-  update: function(table, objColVals, condition, cb) {
-    var queryString = "UPDATE " + table;
-
-    queryString += " SET ";
-    queryString += objToSql(objColVals);
-    queryString += " WHERE ";
-    queryString += condition;
-
-    console.log(queryString);
-    connection.query(queryString, function(err, result) {
+  update: function(tableInput, condition, cb) {
+    connection.query("UPDATE " + tableInput + "SET devoured=true WHERE id="+condition+";", function(err, result) {
       if (err) {
         throw err;
       }
 
       cb(result);
     });
-  },
-  delete: function(table, condition, cb) {
-    var queryString = "DELETE FROM " + table;
-    queryString += " WHERE ";
-    queryString += condition;
+  }, // end of update function
 
-    connection.query(queryString, function(err, result) {
+  create: function(tableInput, val, cb) {
+    connection.query("INSERT INTO " + tableInput + " (burger_name) VALUES ('"+val+"'');", function(err, result) {
       if (err) {
         throw err;
       }
-
       cb(result);
     });
-  }
-};
+  } // end of create function
+
+}; // end of orm
 
 // Export the orm object for the model (burger.js).
 module.exports = orm;
