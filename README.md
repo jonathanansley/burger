@@ -2,20 +2,15 @@
 Handlebars, Express, node.js, ORM, MVC
 
 
-
-
-
 ### Overview
 
 Follow the MVC design pattern; use Node and MySQL to query and route data in your app, and Handlebars to generate your HTML.
 
 
 
-
-
 ### Important
 
-Be sure to utilize the [MYSQL Heroku Deployment Guide](../Supplemental/MySQLHerokuDeploymentProcess.pdf) in order to deploy your assignment.
+Utilize the [MYSQL Heroku Deployment Guide](../Supplemental/MySQLHerokuDeploymentProcess.pdf) in order to deploy your assignment.
 
 
 
@@ -34,97 +29,13 @@ Be sure to utilize the [MYSQL Heroku Deployment Guide](../Supplemental/MySQLHero
 
 
 
-
-
-
-
-#### App Setup
-
-1. Create a GitHub repo called `burger` and clone it to your computer. - done
-
-2. Make a package.json file by running `npm init` from the command line. - done
-
-3. Install the Express npm package: `npm install express --save`. done
-
-4. Create a server.js file. - done
-
-5. Install the Handlebars npm package: `npm install express-handlebars --save`. done
-
-6. Install the method-override npm package: `npm install method-override --save`. - done
-
-7. Install the body-parser npm package: `npm install body-parser --save`. - done
-
-8. Install MySQL npm package: `npm install mysql --save`. - done
-
-done - 9. Require the following npm packages inside of the server.js file:
-   * express
-   * method-override
-   * body-parser
-
-
-
-
-#### DB Setup
-
-done - 1. Inside your `burger` directory, create a folder named `db`.
-
-done - 2. In the `db` folder, create a file named `schema.sql`. Write SQL queries this file that do the following:
-
-   * Create the `burgers_db`.
-   * Switch to or use the `burgers_db`.
-   * Create a `burgers` table with these fields:
-     * **id**: an auto incrementing int that serves as the primary key.
-     * **burger_name**: a string.
-     * **devoured**: a boolean.
-     * **date**: a TIMESTAMP.
-
-done - 3. Still in the `db` folder, create a `seeds.sql` file. In this file, write insert queries to populate the `burgers` table with at least three entries.
-
-done but not from command line - 4. Run the `schema.sql` and `seeds.sql` files into the mysql server from the command line
-
-5. Now you're going to run these SQL files. 
-
-   * Make sure you're in the `db` folder of your app.
-
-   * Start MySQL command line tool and login: `mysql -u root -p`.
-
-   * With the `mysql>` command line tool running, enter the command `source schema.sql`. This will run your schema file and all of the queries in it -- in other words, you'll be creating your database.
-
-   * Now insert the entries you defined in `seeds.sql` by running the file: `source seeds.sql`.
-
-   * Close out of the MySQL command line tool: `exit`.
-
-
-
-
 #### Config Setup
-
-1. Inside your `burger` directory, create a folder named `config`. - done
-
-2. Create a `connection.js` file inside `config` directory. - done
-
-   done - * Inside the `connection.js` file, setup the code to connect Node to MySQL.
-
-   done - * Export the connection.
-
-
-
-
-
-
-3. Create an `orm.js` file inside `config` directory. - done
-
-   done - * Import (require) `connection.js` into `orm.js`
 
    * In the `orm.js` file, create the methods that will execute the necessary MySQL commands in the controllers. These are the methods you will need to use in order to retrieve and store data in your database.
 
      * `selectAll()` 
      * `insertOne()` 
      * `updateOne()` 
-
-   done - * Export the ORM object in `module.exports`.
-
-
 
 
 
@@ -134,31 +45,7 @@ done but not from command line - 4. Run the `schema.sql` and `seeds.sql` files i
 
 * Inside your `burger` directory, create a folder named `models`.
 
-  * In `models`, make a `burger.js` file. - done
-
-    done - * Inside `burger.js`, import `orm.js` into `burger.js`
-
     * Also inside `burger.js`, create the code that will call the ORM functions using burger specific input for the ORM.
-
-    done - * Export at the end of the `burger.js` file.
-
-
-
-
-#### Controller setup
-
-done - 1. Inside your `burger` directory, create a folder named `controllers`.
-
-done - 2. In `controllers`, create the `burgers_controller.js` file. - done
-
-done - 3. Inside the `burgers_controller.js` file, import the following:
-
-   * Express
-   * `burger.js`
-
-4. Create the `router` for the app, and export the `router` at the end of your file.
-
-
 
 
 
@@ -167,33 +54,4 @@ done - 3. Inside the `burgers_controller.js` file, import the following:
 
 1. Inside your `burger` directory, create a folder named `views`.
 
-   * Create the `index.handlebars` file inside `views` directory. - done
-
-   * Create the `layouts` directory inside `views` directory. - done
-
-     * Create the `main.handlebars` file inside `layouts` directory. - done
-
-     * Setup the `main.handlebars` file so it's able to be used by Handlebars.
-
-     * Setup the `index.handlebars` to have the template that Handlebars can render onto.
-
-     * Create a button in `index.handlebars` that will submit the user input into the database.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#### Directory structure  - done
+     * Setup the `main.handlebars` file so it's able to be used by Handlebars. - Does this mean {{{ body }}} ?
